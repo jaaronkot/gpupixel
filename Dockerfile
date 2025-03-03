@@ -21,4 +21,4 @@ CMD ["/bin/bash", "-c", "cmake -B build -S src -DCMAKE_BUILD_TYPE=Release && cd 
 # 构建镜像
 # docker build -t gpupixel .
 # 执行镜像
-# docker run -it --rm -v $(pwd)/output:~/workspace/output -v $(pwd)/build:~/workspace/build gpupixel
+# docker run -it --rm -v $(pwd)/output:/workspace/output -v $(pwd)/build:/workspace/build gpupixel
