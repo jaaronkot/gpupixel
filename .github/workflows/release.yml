@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gpupixel_linux_x86_64
-          path: $(pwd)/output/gpupixel_linux_x86_64.zip
+          path: output/gpupixel_linux_x86_64.zip
 
   build-macos-clang:
     name: macOS (Universal)
