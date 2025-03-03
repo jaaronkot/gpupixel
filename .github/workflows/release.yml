@@ -19,7 +19,8 @@ jobs:
         run: docker build -t gpupixel_img .
  
       - name: Build 
-        run: mkdir -p build output && \
+        run: >
+          mkdir -p build output && \
           docker run --rm \ 
           -u $(id -u):$(id -g) \
           -v $(pwd)/output:/workspace/output 
