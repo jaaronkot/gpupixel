@@ -24,9 +24,10 @@ jobs:
 
       - name: Create zip
         working-directory: output
-        run: zip -r gpupixel_linux_x86_64.zip .
+        run: zip -r gpupixel_linux_x86_64.zip . && ls
 
       - name: Upload Linux Artifact
+        working-directory: output
         uses: actions/upload-artifact@v4
         with:
           name: gpupixel_linux_x86_64
