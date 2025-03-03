@@ -1,7 +1,8 @@
 name: Release Multi Platform
 on:
   push:
-    branches: [main, dev ]
+    tags:
+      - "v*"
   workflow_dispatch:
 
 jobs:
@@ -16,19 +17,22 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t gpupixel .
+        run: docker build -t gpupixel_img .
  
       - name: Build 
-        run: mkdir -p build output && docker run --rm -u $(id -u):$(id -g) -v $(pwd)/output:/workspace/output -v $(pwd)/build:/workspace/build -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro gpupixel
+        run: mkdir -p build output && \
+          docker run --rm \ 
+          -u $(id -u):$(id -g) \
+          -v $(pwd)/output:/workspace/output 
+          -v $(pwd)/build:/workspace/build \
+          -v /etc/passwd:/etc/passwd:ro \
+          -v /etc/group:/etc/group:ro gpupixel_img
 
 
       - name: Create zip
         working-directory: output
         run: zip -r gpupixel_linux_x86_64.zip . && ls
 
-      - name: Print current directory
-        run: pwd && ls && ls output
-        
       - name: Upload Linux Artifact
         uses: actions/upload-artifact@v4
         with:
