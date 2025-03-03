@@ -19,7 +19,7 @@ jobs:
         run: docker build -t gpupixel .
  
       - name: Build 
-        run: mkdir -p build output && docker run --rm -u $(id -u):$(id -g) -v $(pwd)/output:/~/workspace/output -v $(pwd)/build:~/workspace/build -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro gpupixel
+        run: mkdir -p build output && docker run --rm -u $(id -u):$(id -g) -v $(pwd)/output:/workspace/output -v $(pwd)/build:/workspace/build -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro gpupixel
 
 
       - name: Create zip
