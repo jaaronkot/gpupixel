@@ -10,7 +10,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # 设置工作目录
-WORKDIR /workspace
+WORKDIR ~/workspace
 
 # 复制你的 C++ 工程到容器中
 COPY . .
@@ -21,4 +21,4 @@ CMD ["/bin/bash", "-c", "cmake -B build -S src -DCMAKE_BUILD_TYPE=Release && cd 
 # 构建镜像
 # docker build -t gpupixel .
 # 执行镜像
-# docker run -it --rm -v $(pwd)/output:/workspace/output -v $(pwd)/build:/workspace/build gpupixel
+# docker run -it --rm -v $(pwd)/output:~/workspace/output -v $(pwd)/build:~/workspace/build gpupixel
