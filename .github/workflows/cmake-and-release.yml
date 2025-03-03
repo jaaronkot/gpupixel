@@ -1,8 +1,7 @@
 name: Release Multi Platform
 on:
   push:
-    tags:
-      - "v*"
+    branches: [main, dev ]
   workflow_dispatch:
 
 jobs:
@@ -20,7 +19,7 @@ jobs:
         run: docker build -t gpupixel .
  
       - name: Build 
-        run: pwd && docker run --rm -v $(pwd)/output:/workspace/output -v $(pwd)/build:/workspace/build gpupixel
+        run: docker run --rm -v -u $(id -u):$(id -g) $(pwd)/output:/workspace/output -v $(pwd)/build:/workspace/build gpupixel
 
 
       - name: Create zip
