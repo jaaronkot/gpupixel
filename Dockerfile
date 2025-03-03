@@ -10,7 +10,7 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # 设置工作目录
-WORKDIR ~/workspace
+WORKDIR /workspace
 
 # 复制你的 C++ 工程到容器中
 COPY . .
