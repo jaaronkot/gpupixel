@@ -1,8 +1,7 @@
 name: Release Multi Platform
 on:
   push:
-    tags:
-      - "v*"
+    branches: [main, dev ]
   workflow_dispatch:
 
 jobs:
